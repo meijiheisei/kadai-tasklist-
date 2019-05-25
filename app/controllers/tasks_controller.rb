@@ -3,11 +3,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
      if logged_in?
-          @tasks = Task.all
+          @tasks = current_user.tasks.order('created_at DESC')
+     else
+    @tasks = Task.all
+     
      end
-    
-     
-     
   end  
 
 
